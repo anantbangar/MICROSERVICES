@@ -10,7 +10,7 @@ import com.userService.payload.ApiResponse.ApiResponseBuilder;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler 
-{
+{	
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ApiResponse> handlerResourceNotFoundException(ResourceNotFoundException ex)
 	{
@@ -20,5 +20,17 @@ public class GlobalExceptionHandler
 		return new ResponseEntity<ApiResponse>(response,HttpStatus.NOT_FOUND);
 		
 	}
+		
+	/*
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ApiResponse> handlerResourceNotFoundException(Exception ex)
+	{
+		String msg = ex.getMessage();
+		ApiResponse response = ApiResponse.builder().msg(msg).success(true).status(HttpStatus.NOT_FOUND).build();
+		
+		return new ResponseEntity<ApiResponse>(response,HttpStatus.NOT_FOUND);
+		
+	}
+	*/
 
 }

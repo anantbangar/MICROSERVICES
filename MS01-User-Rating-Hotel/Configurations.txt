@@ -5,4 +5,7 @@ HotelService
 	server.port=8082
 
 RatingService
-	server.port=8083
+	server.port=8083   
+
+ServiceRegistry
+	server.port=8761
