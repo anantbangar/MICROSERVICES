@@ -1,0 +1,18 @@
+package com.ratingService.controllers;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ratingService.entities.Rating;
+
+@RestController
+@RequestMapping("/ratings")
+public class RatingController 
+{
+	public ResponseEntity<Rating> createRating(Rating rating)
+	{
+		
+	}
+
+}

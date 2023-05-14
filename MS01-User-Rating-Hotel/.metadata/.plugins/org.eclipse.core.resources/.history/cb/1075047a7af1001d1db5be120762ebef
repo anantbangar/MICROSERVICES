@@ -1,0 +1,12 @@
+package com.hotelService.entities;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Hotel 
+{
+	private String hotelId;
+	private String name;
+	private String location;
+
+}

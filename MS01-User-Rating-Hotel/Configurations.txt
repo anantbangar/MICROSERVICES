@@ -1,0 +1,8 @@
+UserService
+	server.port=8081
+
+HotelService
+	server.port=8082
+
+RatingService
+	server.port=8083

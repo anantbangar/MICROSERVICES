@@ -1,0 +1,11 @@
+package com.hotelService.payload;
+
+import org.springframework.http.HttpStatus;
+
+public class ApiResponse 
+{
+	private String msg;
+	private boolean success;
+	private HttpStatus status;
+
+}

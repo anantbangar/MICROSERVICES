@@ -1,0 +1,29 @@
+package com.hotelService.services.impls;
+
+import java.util.List;
+
+import com.hotelService.entities.Hotel;
+import com.hotelService.services.HoteService;
+
+public class HotelServiceImpl implements HoteService 
+{
+
+	@Override
+	public Hotel createHotel(Hotel hotel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Hotel> getAllHotels() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Hotel getHotel(String hotelId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

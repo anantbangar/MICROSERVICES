@@ -1,0 +1,5 @@
+package com.userService.repositories;
+
+public class UserRepository {
+
+}
