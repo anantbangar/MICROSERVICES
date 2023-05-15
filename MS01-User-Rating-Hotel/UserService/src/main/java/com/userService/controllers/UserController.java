@@ -39,7 +39,7 @@ public class UserController
 		
 	}
 	
-	/*
+	
 	@GetMapping("/{userId}")
 	public ResponseEntity<User> getUser(@PathVariable("userId") String userId)
 	{
@@ -47,8 +47,9 @@ public class UserController
 		return ResponseEntity.ok(user);
 		
 	}
-	*/
 	
+	
+	/*
 	@GetMapping("/byId")
 	public ResponseEntity<User> getUser(@RequestParam("userId") String userId)
 	{
@@ -56,4 +57,5 @@ public class UserController
 		return ResponseEntity.ok(user);
 		
 	}
+	*/
 }
