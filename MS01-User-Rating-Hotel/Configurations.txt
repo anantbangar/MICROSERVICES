@@ -10,5 +10,8 @@ RatingService
 ServiceRegistry
 	server.port=8761
 
-ApiGatewat
+ApiGateway
 	server.port=8084
+
+ConfigServer
+	server.port=8085
