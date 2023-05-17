@@ -17,6 +17,8 @@ import com.userService.entities.Hotel;
 import com.userService.entities.Rating;
 import com.userService.entities.User;
 import com.userService.exceptions.ResourceNotFoundException;
+import com.userService.external.services.HotelService;
+import com.userService.external.services.RatingService;
 import com.userService.repositories.UserRepository;
 import com.userService.services.UserService;
 
@@ -28,6 +30,13 @@ public class UserServiceImpl implements UserService
 
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private HotelService hotelService;
+	
+	@Autowired
+	private RatingService ratingService;
+	
 
 	private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -50,8 +59,8 @@ public class UserServiceImpl implements UserService
 
 		for (User user : userList) 
 		{
-			Rating[] ratingsOfUser = restTemplate
-					.getForObject("http://RATING-SERVICE/ratings/users/" + user.getUserId(), Rating[].class);
+			//Get Ratings using RestTemplate and removing Host and port
+			Rating[] ratingsOfUser = restTemplate.getForObject("http://RATING-SERVICE/ratings/users/" + user.getUserId(), Rating[].class);
 
 			List<Rating> ratingsOfUserList = Arrays.asList(ratingsOfUser);
 
@@ -59,8 +68,8 @@ public class UserServiceImpl implements UserService
 			{
 				for (Rating rating : ratingsOfUserList) 
 				{
-					Hotel hotel = restTemplate.getForObject("http://HOTEL-SERVICE/hotels/" + rating.getHotelId(),
-						Hotel.class);
+					//Get Hotel using RestTemplate and removing Host and port
+					Hotel hotel = restTemplate.getForObject("http://HOTEL-SERVICE/hotels/" + rating.getHotelId(), Hotel.class);
 					rating.setHotel(hotel);
 					ratings.add(rating);
 				}
@@ -77,14 +86,29 @@ public class UserServiceImpl implements UserService
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User with giving id is not found on Server !!"));
 
-		Rating[] ratingsOfUser = restTemplate.getForObject("http://RATING-SERVICE/ratings/users/" + user.getUserId(),
-				Rating[].class);
+		//Get Ratings using RestTemplate and using http url
+		//Rating[] ratingsOfUser = restTemplate.getForObject("http://localhost:8083/ratings/users/" + user.getUserId(), Rating[].class);
+		
+		//Get Ratings using RestTemplate and removing Host and port
+		//Rating[] ratingsOfUser = restTemplate.getForObject("http://RATING-SERVICE/ratings/users/" + user.getUserId(), Rating[].class);
+		
+		//Get Ratings using Feign Client
+		Rating[] ratingsOfUser = ratingService.getRatings(user.getUserId());
+		
 
 		List<Rating> ratings = Arrays.asList(ratingsOfUser);
 
 		List<Rating> ratingList = ratings.stream().map(rating -> {
 
-			Hotel hotel = restTemplate.getForObject("http://HOTEL-SERVICE/hotels/" + rating.getHotelId(), Hotel.class);
+			//Get Hotel using RestTemplate and using http url
+			//Hotel hotel = restTemplate.getForObject("http://localhost:8082/hotels/" + rating.getHotelId(), Hotel.class);
+			
+			//Get Hotel using RestTemplate and removing Host and port
+			//Hotel hotel = restTemplate.getForObject("http://HOTEL-SERVICE/hotels/" + rating.getHotelId(), Hotel.class);
+			
+			//Get Hotel using Feign Client
+			Hotel hotel = hotelService.getHotel(rating.getHotelId());
+			
 			rating.setHotel(hotel);
 
 			return rating;
