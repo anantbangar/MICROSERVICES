@@ -9,3 +9,6 @@ RatingService
 
 ServiceRegistry
 	server.port=8761
+
+ApiGatewat
+	server.port=8084
