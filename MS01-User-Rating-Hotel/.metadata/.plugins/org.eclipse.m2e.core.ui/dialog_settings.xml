@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="F:\ANANT\MY WORK NEW\My Work\JAVA\Advanced Java Programs\MICROSERVICES\MS01-User-Rating-Hotel\ConfigServer"/>
 			<item value="F:\ANANT\MY WORK NEW\My Work\JAVA\Advanced Java Programs\MICROSERVICES\MS01-User-Rating-Hotel\ApiGateway"/>
 			<item value="F:\ANANT\MY WORK NEW\My Work\JAVA\Advanced Java Programs\MICROSERVICES\MS01-User-Rating-Hotel\ServiceRegistry"/>
 			<item value="F:\ANANT\MY WORK NEW\My Work\JAVA\Advanced Java Programs\MICROSERVICES\MS01-User-Rating-Hotel\UserService"/>
